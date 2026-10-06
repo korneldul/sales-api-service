@@ -8,3 +8,8 @@ app = FastAPI(title="Sales API Service")
 @app.get("/sales")
 def list_sales() -> list[dict]:
     return load_sales()
+    
+
+@app.get("/")
+def root() -> dict:
+    return {"service": "Sales API Service", "endpoints": ["/sales", "/docs"]}
