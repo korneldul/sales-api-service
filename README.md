@@ -15,4 +15,12 @@ uv run uvicorn sales_api_service.main:app --app-dir src --reload
 
 Then open http://127.0.0.1:8000/sales for the data and http://127.0.0.1:8000/docs for the interactive documentation.
 
+
+
+## Run the tests
+
+bash
+uv run pytest
+
+
 *More documentation (installation, usage, examples) will be added during the project.*
