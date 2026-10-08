@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 
 from sales_api_service.data import load_sales
-from sales_api_service.queries import find_order
+from sales_api_service.queries import filter_by_region, find_order
 
 app = FastAPI(title="Sales API Service")
 
@@ -22,8 +22,11 @@ def root() -> dict:
 
 
 @app.get("/sales")
-def list_sales() -> list[dict]:
-    return get_sales()
+def list_sales(region: str | None = None) -> list[dict]:
+    sales = get_sales()
+    if region is not None:
+        return filter_by_region(sales, region)
+    return sales
 
 
 @app.get("/sales/{order_id}")
